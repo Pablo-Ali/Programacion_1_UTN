@@ -1,31 +1,31 @@
 # Ali, Pablo Sharif
 # Comisión 313
 
-def suma (num1 : int, num2 : int) -> int:
+def calcular_suma (num1 : int, num2 : int) -> int:
     '''
     Retorna el resultado de la suma de los números ingresados como parámetros
     '''
     return num1 + num2
 
-def resta (num1 : int, num2 : int) -> int:
+def calcular_resta (num1 : int, num2 : int) -> int:
     '''
     Retorna el resultado de la resta de los números ingresados como parámetros
     '''
     return num1 - num2
 
-def multiplicacion (num1 : int, num2 : int) -> int:
+def calcular_multiplicacion (num1 : int, num2 : int) -> int:
     '''
     Retorna el resultado de la multiplicación de los números ingresados como parámetros
     '''
     return num1 * num2
 
-def division (num1 : int, num2 : int) -> float:
+def calcular_division (num1 : int, num2 : int) -> float:
     '''
     Retorna el resultado de la división de los números ingresados como parámetros
     '''
     return num1 / num2
 
-def potencia (num1 : int, num2 : int) -> int:
+def calcular_potencia (num1 : int, num2 : int) -> int:
     '''
     Retorna el resultado de la potencia del primer parámetro elevado al segundo parámetro (que debe ser un entero)
     '''
@@ -36,15 +36,15 @@ def potencia (num1 : int, num2 : int) -> int:
 
     return resultado
 
-def resto (num1 : int, num2 : int) -> int:
+def calcular_resto (num1 : int, num2 : int) -> int:
     '''
     Retorna el resto de la división de los números ingresados como parámetros
     '''
     return num1 % num2
 
-def factorial (num : int) -> int:
+def calcular_factorial (num : int) -> int:
     '''
-    Retorna el factorial del numero ingresado
+    Retorna el factorial del numero ingresado usando iteración
     '''
     resultado = 1
 
@@ -52,3 +52,15 @@ def factorial (num : int) -> int:
         resultado *= i
 
     return resultado
+
+def calcular_factorial_recursivo (num : int) -> int:
+    '''
+    Retorna el factorial del numero ingresado usando recurividad
+    '''
+    if num > 1:
+        resultado = num * calcular_factorial_recursivo(num - 1)
+    else:
+        resultado = 1
+    
+    return resultado
+

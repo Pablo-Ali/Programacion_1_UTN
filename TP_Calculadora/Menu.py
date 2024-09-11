@@ -4,6 +4,9 @@
 import Funciones
 
 def menu():
+    '''
+    Menú que permite elegir las opciones para utilizar una calculadora que toma dos números, realiza varias operaciones y muestra los resultados.
+    '''
     flag_n1 = False
     flag_n2 = False
     flag_operacion = False
@@ -21,15 +24,15 @@ def menu():
                 flag_n2 = True
             case 3:
                 if flag_n1 and flag_n2:
-                    r_suma = Funciones.suma(n1, n2)
-                    r_resta = Funciones.resta(n1, n2)
-                    r_mult = Funciones.multiplicacion(n1, n2)
-                    r_pot = Funciones.potencia(n1, n2)
-                    r_fac_1 = Funciones.factorial(n1)
-                    r_fac_2 = Funciones.factorial(n2)
+                    r_suma = Funciones.calcular_suma(n1, n2)
+                    r_resta = Funciones.calcular_resta(n1, n2)
+                    r_mult = Funciones.calcular_multiplicacion(n1, n2)
+                    r_pot = Funciones.calcular_potencia(n1, n2)
+                    r_fac_1 = Funciones.calcular_factorial(n1)
+                    r_fac_2 = Funciones.calcular_factorial_recursivo(n2)
                     if n2 != 0:
-                        r_div = Funciones.division(n1, n2)
-                        r_mod = Funciones.resto(n1, n2)
+                        r_div = Funciones.calcular_division(n1, n2)
+                        r_mod = Funciones.calcular_resto(n1, n2)
 
                     print("Operaciones calculadas con éxito")
                     flag_operacion = True

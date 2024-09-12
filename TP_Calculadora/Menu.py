@@ -28,8 +28,8 @@ def menu():
                     r_resta = Funciones.calcular_resta(n1, n2)
                     r_mult = Funciones.calcular_multiplicacion(n1, n2)
                     r_pot = Funciones.calcular_potencia(n1, n2)
-                    r_fac_1 = Funciones.calcular_factorial(n1)
-                    r_fac_2 = Funciones.calcular_factorial_recursivo(n2)
+                    r_fac_1 = Funciones.calcular_factorial(n1) # con for
+                    r_fac_2 = Funciones.calcular_factorial_recursivo(n2) # con recursividad
                     if n2 != 0:
                         r_div = Funciones.calcular_division(n1, n2)
                         r_mod = Funciones.calcular_resto(n1, n2)

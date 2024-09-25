@@ -46,13 +46,13 @@ def ingresar_string(rango : int) -> list:
     lista y la retorna.
     '''
     
-    lista_nombres = []
+    lista_string = []
 
     for i in range (rango):
-        nombre = input("Ingrese el string: ")
-        lista_nombres.append(nombre)
+        string = input("Ingrese el string: ")
+        lista_string.append(string)
     
-    return lista_nombres
+    return lista_string
 
 def retornar_nombres_mas_cortos(lista_nombres : list) -> list:
     '''
@@ -105,3 +105,68 @@ def contar_apellidos_repetidos(lista_apellidos_comunes : list) -> None:
         print(f"{lista_apellidos_comunes[i]} se repite {contador} veces")
 
 contar_apellidos_repetidos(["López", "Gómez", "Fernández", "Pérez", "Martínez"])
+
+# 5
+
+def ingresar_numero(rango : int) -> list:
+    '''
+    Función que toma un entero y solicita ingresar por 
+    teclado esa cantidad de numeros enteros, que almacena en una 
+    lista y la retorna.
+    '''
+    
+    lista_numero = []
+
+    for i in range (rango):
+        numero = int(input("Ingrese el numero: "))
+        lista_numero.append(numero)
+    
+    return lista_numero
+
+
+
+def imprimir_mayores_edad(lista_nombres : list, lista_edades : list) -> None:
+    '''
+    Función que recibe una lista de nombres y una lista con edades.
+    Imprime los nombres de los mayores de edad. En caso de no 
+    haberlos, lo notifica
+    '''
+    flag = True
+    
+    for i in range (len(lista_nombres)):
+        if lista_edades[i] >= 18:
+            print(f"{lista_nombres[i]} es mayor de edad")
+            flag = False
+
+    if flag:
+     print("No hay mayores de edad")
+
+l_nombres = ingresar_string(5)
+l_edades = ingresar_numero(5)
+imprimir_mayores_edad(l_nombres, l_edades)
+
+# 6
+
+def imprimir_productos_mayores_al_primero(lista_prod: list, lista_precio : list) -> None:
+    '''
+    Función que recibe una lista de productos y una lista con precios.
+    Imprime aqueyos productos cuyo precio supera al primero; en caso de no 
+    haberlos, avisa que no hay.
+    '''
+    precio_primer_prod = lista_precio[0]
+    flag = True
+    
+    for i in range (len(lista_prod)):
+        if lista_precio[i] > precio_primer_prod:
+            print(lista_prod[i])
+            flag = False
+    
+    if flag:
+        print("El primer producto poseía el mayor precio")
+
+l_productos = ingresar_string(5)
+l_precios = ingresar_numero(5)
+imprimir_productos_mayores_al_primero(l_productos, l_precios)
+
+# 7
+#Es más de lo mismo solo que con un par de validaciones más, y no tengo el tiempo como para ponerme a hacerlo en tiempo y fomra. Dudo de que esto sea leído, pero, de ser así, pido disculpas. (Tendría que agregar validaciones de rango a la función que pide números, o crear una nueva para no interferir con la anterior (si estuviesemos con POO, haría sobrecarga de métodos, acá no sé si se puede). Después ya es hacer la función que recorre las listas paralelas y verifica el promedio más alto. Habría que agregarle una verificación para ver si es más de uno (se pueden meter en una lista auxiliar e imprimir todos juntos al final)). 

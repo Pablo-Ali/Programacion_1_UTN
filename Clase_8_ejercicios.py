@@ -39,16 +39,17 @@ print(retornar_str_con_mas_5_char(["hola", "pentágono", "amarillo", "2", "Pablo
 
 # 3
 
-def ingresar_nombres(rango : int) -> list:
+def ingresar_string(rango : int) -> list:
     '''
-    Función que permite ingresar por teclado 
-    la cantidad de nombres solicitada por parámetro y retornarlos en una lista.
+    Función que toma un entero y solicita ingresar por 
+    teclado esa cantidad de strings, que almacena en una 
+    lista y la retorna.
     '''
     
     lista_nombres = []
 
     for i in range (rango):
-        nombre = input("Ingrese el nombre: ")
+        nombre = input("Ingrese el string: ")
         lista_nombres.append(nombre)
     
     return lista_nombres
@@ -74,19 +75,19 @@ def retornar_nombres_mas_cortos(lista_nombres : list) -> list:
 
     return(lista_aux)
 
-lista_de_nombres = ingresar_nombres(5)
+lista_de_nombres = ingresar_string(5)
 print(retornar_nombres_mas_cortos(lista_de_nombres))
 
 # 4
 
-def contar_apellidos_repetidos(lista_apellidos_comunes : list):
+def contar_apellidos_repetidos(lista_apellidos_comunes : list) -> None:
     '''
     Función que recibe una lista con apellidos comunes, pide que se ingresen otros 
     apellidos, los almacena en una nueva lista y compara las coincidencias. Imprime los 
     resultados de la comparación.
     '''
 
-    lista_apellidos = ingresar_nombres(10)
+    lista_apellidos = ingresar_string(10)
     lista_aux = []
 
 

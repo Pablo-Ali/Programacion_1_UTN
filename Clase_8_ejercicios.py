@@ -169,4 +169,7 @@ l_precios = ingresar_numero(5)
 imprimir_productos_mayores_al_primero(l_productos, l_precios)
 
 # 7
-#Es más de lo mismo solo que con un par de validaciones más, y no tengo el tiempo como para ponerme a hacerlo en tiempo y fomra. Dudo de que esto sea leído, pero, de ser así, pido disculpas. (Tendría que agregar validaciones de rango a la función que pide números, o crear una nueva para no interferir con la anterior (si estuviesemos con POO, haría sobrecarga de métodos, acá no sé si se puede). Después ya es hacer la función que recorre las listas paralelas y verifica el promedio más alto. Habría que agregarle una verificación para ver si es más de uno (se pueden meter en una lista auxiliar e imprimir todos juntos al final)). 
+#Es más de lo mismo solo que con un par de validaciones más, y no tengo el tiempo como para ponerme a hacerlo en tiempo y fomra. Dudo de que esto sea leído,
+#  pero, de ser así, pido disculpas. (Tendría que agregar validaciones de rango a la función que pide números, o crear una nueva para no interferir con la anterior 
+# (si estuviesemos con POO, haría sobrecarga de métodos, acá no sé si se puede). Después ya es hacer la función que recorre las listas paralelas y verifica el promedio más alto. 
+# Habría que agregarle una verificación para ver si es más de uno (se pueden meter en una lista auxiliar e imprimir todos juntos al final)). 

@@ -26,7 +26,7 @@ def cargar_matriz() -> list:
     '''
     Función que retorna una matriz cargada con los datos de diez alumnos.
     '''
-    matriz = inicializar_matriz(1, 5)
+    matriz = inicializar_matriz(10, 5)
     
     for i in range (len(matriz)):
         matriz[i][0] = ingresar_nombre()
@@ -210,6 +210,12 @@ def buscar_por_DNI(matriz : list, columna : int) -> None:
         print(f"No se encuentra un alumno con el DNI {dni}")
 
 def imprimir_cantidades(matriz : list, columna : int) -> None:
+    '''
+    Función que recibe una matriz y un número de columna. Toma esos datos y 
+    llama a las funciones que dictaminan los estados de aprobacion.
+    Imprime los resultados.
+    '''
+
     promocionados = buscar_promocionados(matriz, columna)
     regularizados = buscar_regularizados(matriz, columna)
     desaprobados = buscar_desaprobados(matriz, columna)
@@ -225,4 +231,81 @@ def imprimir_cantidades(matriz : list, columna : int) -> None:
     if desaprobados == -1:
         print("Desaprobados: No hay alumnos desaprobados")
     else:
-        print(f"Desaprobados: {len(desaprobados)}")
+        print(f"Desaprobados: {len(desaprobados)}") 
+
+def calcular_promedio(matriz : list, columna : int) -> float:
+    '''
+    Función que recibe una matriz y una columna. Calcula y retorna el
+    promedio de los números hallados en la respectiva columna.
+    '''
+    suma = 0
+
+    for i in range (len(matriz)):
+        suma += matriz[i][columna]
+
+    return suma / len(matriz)
+
+def calcular_promedio_masculinos(matriz : list, columna_nota : int, columna_genero : int) -> float:
+    '''
+    Función que recibe una matriz, una columna de notas y otra de generos. 
+    Calcula y retorna el promedio de los números hallados en la columna de notas
+    siempre que el género sea masculino.
+    '''
+    suma = 0
+    contador = 0
+
+    for i in range (len(matriz)):
+        if matriz[i][columna_genero] == "M":
+            suma += matriz[i][columna_nota]
+            contador += 1
+
+    return suma / contador
+
+def imprimir_porcentaje_generos(matriz : list, columna_genero : int) -> None:
+    '''
+    Función que recibe una matriz y una columna de generos. 
+    Calcula e imprime el porcentaje de cada género.
+    '''
+    suma_M = 0
+    suma_F = 0
+    suma_NB = 0
+
+    for i in range (len(matriz)):
+        if matriz[i][columna_genero] == "M":
+            suma_M += 1
+        elif matriz[i][columna_genero] == "F":
+            suma_F += 1
+        else:
+            suma_NB += 1
+
+    print(f"El porcentaje de alumnos masculinos es: {suma_M / len(matriz) * 100}")
+    print(f"El porcentaje de alumnos femeninos es: {suma_F / len(matriz) * 100}")
+    print(f"El porcentaje de alumnos no binarios es: {suma_NB / len(matriz) * 100}")
+
+def imprimir_alumnos_mayor_nota(matriz : list, columna : int) -> None:
+    mat_aux = []
+    nota_max = 0
+
+    for i in range (len(matriz)):
+        if matriz[i][columna] > nota_max:
+            nota_max = matriz[i][columna]
+
+    for i in range (len(matriz)):
+        if matriz[i][columna] == nota_max:
+            mat_aux.append(matriz[i])
+    
+    mostrar_matriz(matriz)
+
+def calcular_alumnos_superan_promedio(matriz : list, columna : int, promedio : float) -> int:
+    '''
+    Función que recibe una matriz, un número de columna y un promedio.
+    Calcula y retorna la cantidad de alumnos que superan el promedio.
+    '''
+    
+    contador = 0
+    
+    for i in range (len(matriz)):
+        if matriz[i][columna] > promedio:
+            contador += 1
+
+    return contador

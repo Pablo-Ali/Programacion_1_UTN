@@ -26,7 +26,7 @@ def cargar_matriz() -> list:
     '''
     Función que retorna una matriz cargada con los datos de diez alumnos.
     '''
-    matriz = inicializar_matriz(10, 5)
+    matriz = inicializar_matriz(1, 5)
     
     for i in range (len(matriz)):
         matriz[i][0] = ingresar_nombre()
@@ -126,3 +126,103 @@ def pedir_opcion(min : int, max : int) -> int:
         num = int(input("Ingrese la opción: "))
 
     return num
+
+def buscar_promocionados (matriz : list, columna : int) -> list | int:
+    '''
+    Funcion que recibe una matriz y un número de columna.
+    Crea y retorna una nueva matriz con los alumnos cuya nota sea 
+    superior a 6. 
+    En caso de no haber, retorna -1.
+    '''
+    alumnos_promocionados = []
+    flag = False
+
+    for i in range (len(matriz)):
+        if matriz[i][columna] >= 6:
+            alumnos_promocionados.append(matriz[i])
+            flag = True
+    
+    if flag:
+        return alumnos_promocionados
+    else:
+        return -1
+
+def buscar_regularizados (matriz : list, columna : int) -> list | int:
+    '''
+    Funcion que recibe una matriz y un número de columna.
+    Crea y retorna una nueva matriz con los alumnos cuya nota sea 
+    4 o 5. 
+    En caso de no haber, retorna -1.
+    '''
+    alumnos_regularizados = []
+    flag = False
+
+    for i in range (len(matriz)):
+        if matriz[i][columna] == 4 or matriz[i][columna] == 5:
+            alumnos_regularizados.append(matriz[i])
+            flag = True
+    
+    if flag:
+        return alumnos_regularizados
+    else:
+        return -1
+    
+def buscar_desaprobados (matriz : list, columna : int) -> list | int:
+    '''
+    Funcion que recibe una matriz y un número de columna.
+    Crea y retorna una nueva matriz con los alumnos cuya nota sea 
+    menor a 4. 
+    En caso de no haber, retorna -1.
+    '''
+    alumnos_desaprobados = []
+    flag = False
+
+    for i in range (len(matriz)):
+        if matriz[i][columna] < 4:
+            alumnos_desaprobados.append(matriz[i])
+            flag = True
+    
+    if flag:
+        return alumnos_desaprobados
+    else:
+        return -1
+    
+def buscar_por_DNI(matriz : list, columna : int) -> None:
+    '''
+    Función que recibe por parámetro una matriz y una columna.
+    Pide al usuario un número de DNI y lo compara con la matriz. 
+    Si se encuentra, imprime todos los datos, si no, lo informa.
+    '''
+
+    dni = ingresar_DNI()
+    flag = True
+
+    for i in range (len(matriz)):
+        if dni == matriz[i][columna]:
+            print(f"Nombre: {matriz[i][0]}")
+            print(f"Apellido: {matriz[i][1]}")
+            print(f"DNI: {matriz[i][2]}")
+            print(f"Género: {matriz[i][3]}")
+            print(f"Nota final: {matriz[i][4]}")
+            flag = False
+    
+    if flag:
+        print(f"No se encuentra un alumno con el DNI {dni}")
+
+def imprimir_cantidades(matriz : list, columna : int) -> None:
+    promocionados = buscar_promocionados(matriz, columna)
+    regularizados = buscar_regularizados(matriz, columna)
+    desaprobados = buscar_desaprobados(matriz, columna)
+
+    if promocionados == -1:
+        print("Promocionados: No hay alumnos promocionados")
+    else:
+        print(f"Promocionados: {len(promocionados)}")
+    if regularizados == -1:
+        print("Regularizados: No hay alumnos regularizados")
+    else:
+        print(f"Regularizados: {len(regularizados)}")
+    if desaprobados == -1:
+        print("Desaprobados: No hay alumnos desaprobados")
+    else:
+        print(f"Desaprobados: {len(desaprobados)}")

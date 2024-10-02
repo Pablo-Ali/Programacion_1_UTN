@@ -1,4 +1,3 @@
-#eliminar comentario, es una prueba de github
 import Funciones
 
 titulo = " Menú alumnos Sysacad "
@@ -7,7 +6,7 @@ mensaje_opciones = """
 01 - Ingresar alumnos\n
 02 - Mostrar todos los alumnos\n
 03 - Mostrar alumnos promocionados\n
-04 - Mostrar alumnos aprobados\n
+04 - Mostrar alumnos regularizados\n
 05 - Mostrar alumnos desaprobados\n
 06 - Buscar alumno por DNI\n
 07 - Mostrar totales de cada estado de aprobación\n
@@ -17,9 +16,10 @@ mensaje_opciones = """
 11 - Mostrar el / los alumnos con mayor nota\n
 12 - Mostrar la cantidad de alumnos que superan la nota promedio\n
 13 - Salir\n"""
+flag_carga = False
 
 while(True):
-    print(subrayado)
+    print(f"\n{subrayado}")
     print(titulo)
     print(subrayado)
     print(mensaje_opciones)
@@ -28,29 +28,86 @@ while(True):
 
     match opcion:
         case 1:
-            pass
+            matriz_alumnos = Funciones.cargar_matriz()
+            flag_carga = True
         case 2:
-            pass
+            if flag_carga:
+                print(subrayado)
+                print("Lista completa de alumnos")
+                Funciones.mostrar_matriz(matriz_alumnos)
+            else:
+                print("Primero debe realizar la carga de los alumnos")
         case 3:
-            pass
+            if flag_carga:
+                print(subrayado)
+                print("Lista de alumnos promocionados")
+                promocionados = Funciones.buscar_promocionados(matriz_alumnos, 4)
+                if promocionados == -1:
+                    print("No hay alumnos promocionados")
+                else:
+                    Funciones.mostrar_matriz(promocionados)
+            else:
+                print("Primero debe realizar la carga de los alumnos")
         case 4:
-            pass
+            if flag_carga:
+                print(subrayado)
+                print("Lista de alumnos regularizados")
+                regularizados = Funciones.buscar_regularizados(matriz_alumnos, 4)
+                if regularizados == -1:
+                    print("No hay alumnos regularizados")
+                else:
+                    Funciones.mostrar_matriz(regularizados)
+            else:
+                print("Primero debe realizar la carga de los alumnos")
         case 5:
-            pass
+            if flag_carga:
+                print(subrayado)
+                print("Lista de alumnos desaprobados")
+                desaprobados = Funciones.buscar_desaprobados(matriz_alumnos, 4)
+                if desaprobados == -1:
+                    print("No hay alumnos desaprobados")
+                else:
+                    Funciones.mostrar_matriz(desaprobados)
+            else:
+                print("Primero debe realizar la carga de los alumnos")
         case 6:
-            pass
+            if flag_carga:
+                Funciones.buscar_por_DNI(matriz_alumnos, 2)
+            else:
+                print("Primero debe realizar la carga de los alumnos")
         case 7:
-            pass
+            if flag_carga:
+                print(subrayado)
+                print("Totales de cada estado de aprobación")
+                Funciones.imprimir_cantidades(matriz_alumnos, 4)
+
+            else:
+                print("Primero debe realizar la carga de los alumnos")
         case 8:
-            pass
+            if flag_carga:
+                pass
+            else:
+                print("Primero debe realizar la carga de los alumnos")
         case 9:
-            pass
+            if flag_carga:
+                pass
+            else:
+                print("Primero debe realizar la carga de los alumnos")
         case 10:
-            pass
+            if flag_carga:
+                pass
+            else:
+                print("Primero debe realizar la carga de los alumnos")
         case 11:
-            pass
+            if flag_carga:
+                pass
+            else:
+                print("Primero debe realizar la carga de los alumnos")
         case 12:
-            pass
+            if flag_carga:
+                pass
+            else:
+                print("Primero debe realizar la carga de los alumnos")
         case 13:
             print("Saliendo...")
             break

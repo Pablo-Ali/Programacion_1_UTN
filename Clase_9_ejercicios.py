@@ -142,5 +142,64 @@ def calcular_matriz_traspuesta(matriz : list) -> list:
 matriz_resultado_4 = calcular_matriz_traspuesta(m_1)
 mostrar_matriz(matriz_resultado_4)
 
-def multiplicar_matrices (matriz_1 : list, escalar : int) -> list:
-    pass
+# 5
+
+def validar_largo_multi(matriz_1 : list, matriz_2 : list) -> bool:
+    '''
+    Función que recibe dos matrices y compara su tamaño.
+    Retorna True si pueden multiplicarse en el
+    orden ingresado, False en caso contrario.
+    '''
+    
+    filas_m2 = len(matriz_2)
+    columnas_m1 = len(matriz_1[0])
+
+    if filas_m2 == columnas_m1:
+        return True
+
+    else:
+        return False
+
+
+def multiplicar_matrices (matriz_1 : list, matriz_2 : list) -> list:
+    '''
+    Función que recibe dos matrices y retorna su multiplicación
+    '''
+    
+    matriz_resultado = inicializar_matriz(len(matriz_1), len(matriz_2[0]))
+
+    for i in range(len(matriz_resultado)):
+        for j in range(len(matriz_resultado[0])):
+            resultado = 0
+            for k in range(len(matriz_2)):
+                resultado += matriz_1[i][k] * matriz_2[k][j]
+            matriz_resultado[i][j] = resultado
+
+    return matriz_resultado
+
+m = [
+    [4, 1, -2],
+    [1, 2, 6]
+]
+m2 = [
+    [2, 1],
+    [2, 1],
+    [2, 3]
+]
+
+multiplicable = validar_largo_multi(m, m2)
+multiplicable_2 = validar_largo_multi(m_1, m_2)
+
+if multiplicable:
+    r = multiplicar_matrices(m,m2)
+    mostrar_matriz(r)
+else:
+    r = []
+    print(r)
+
+if multiplicable_2:
+    r_2 = multiplicar_matrices(m_1, m_2)
+    mostrar_matriz(r_2)
+else:
+    r_2 = []
+    print(r_2)

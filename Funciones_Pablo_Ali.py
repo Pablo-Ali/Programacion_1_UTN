@@ -60,6 +60,7 @@ def ordenar_arreglo_burbuja_con_copia(lista : list) -> list:
                 lista_ordenada[i] = lista_ordenada[i + 1]
                 lista_ordenada[i + 1] = aux
                 flag = 1   
+
     return lista_ordenada
 
 def ordenar_matrices_segun_columna(matriz : list, columna : int) -> None:
@@ -73,6 +74,47 @@ def ordenar_matrices_segun_columna(matriz : list, columna : int) -> None:
         flag = 0
         for i in range (len(matriz) - 1):
             if  matriz[i][columna] > matriz[i + 1][columna]:
+                aux = matriz[i]
+                matriz[i] = matriz[i + 1]
+                matriz[i + 1] = aux
+                flag = 1
+
+def ordenar_matrices_segun_columna_con_copia(matriz : list, columna : int) -> list:
+    '''
+    Función que recibe una matriz y un entero que representa una de sus columnas.
+    Ordena esa matriz de menor a mayor.
+    Retorna una copia de la matriz ordenada sin afectar a la original.
+    '''
+    flag = 1
+    matriz_ordenada = matriz.copy()
+    
+    while flag:
+        flag = 0
+        for i in range (len(matriz) - 1):
+            if  matriz_ordenada[i][columna] > matriz_ordenada[i + 1][columna]:
+                aux = matriz_ordenada[i]
+                matriz_ordenada[i] = matriz_ordenada[i + 1]
+                matriz_ordenada[i + 1] = aux
+                flag = 1
+
+    return matriz_ordenada
+
+def ordenar_matriz_doble_criterio(matriz : list, criterio_1 : int, criterio_2 : int) -> None:
+    '''
+    Función que recibe una matriz y dos enteros que funcionan como criterios de ordenamiento.
+    Ordena la matriz según la columna del criterio 1. En caso de haber valores iguales,
+    aplica el ordenamiento según la columna del criterio 2.
+    '''
+
+    flag = 1
+
+    while flag:
+        flag = 0
+        for i in range (len(matriz) - 1):
+            if  (matriz[i][criterio_1] > matriz[i + 1][criterio_1]) or (
+                (matriz[i][criterio_1] == matriz[i + 1][criterio_1]) and 
+                (matriz[i][criterio_2] > matriz[i + 1][criterio_2])):
+                
                 aux = matriz[i]
                 matriz[i] = matriz[i + 1]
                 matriz[i + 1] = aux

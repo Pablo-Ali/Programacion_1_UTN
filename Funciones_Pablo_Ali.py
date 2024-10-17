@@ -24,6 +24,65 @@ def mostrar_matriz(matriz : list) -> None:
             print(matriz[fil][col],end=" ")
         print("")
 
+def validar_largo(matriz_1 : list, matriz_2 : list) -> bool:
+    '''
+    Función que recibe dos matrices y compara su tamaño.
+    Retorna True si son del mismo tamaño, False en caso contrario.
+    '''
+    
+    filas_m1 = len(matriz_1)
+    filas_m2 = len(matriz_2)
+    columnas_m1 = len(matriz_1[0])
+    columnas_m2 = len(matriz_2[0])
+
+    if filas_m1 == filas_m2 and columnas_m1 == columnas_m2:
+        return True
+
+    else:
+        return False
+    
+def validar_largo_multi(matriz_1 : list, matriz_2 : list) -> bool:
+    '''
+    Función que recibe dos matrices y compara su tamaño.
+    Retorna True si pueden multiplicarse en el
+    orden ingresado, False en caso contrario.
+    '''
+    
+    filas_m2 = len(matriz_2)
+    columnas_m1 = len(matriz_1[0])
+
+    if filas_m2 == columnas_m1:
+        return True
+
+    else:
+        return False
+
+def calcular_matriz_traspuesta(matriz : list) -> list:
+    '''
+    Función que recibe una matriz y retorna su traspuesta
+    '''
+
+    matriz_r = inicializar_matriz(len(matriz[0]), len(matriz))
+
+    for i in range (len(matriz_r)):
+        for j in range (len(matriz_r[i])):
+            matriz_r[i][j] = matriz[j][i]
+    
+    return matriz_r
+
+def calcular_matriz_opuesta(matriz : list) -> list:
+    '''
+    Función que recibe una matriz y retorna su opuesta.
+    '''
+
+    matriz_r = inicializar_matriz(len(matriz), len(matriz[0]))
+
+    for i in range (len(matriz)):
+        for j in range (len(matriz[i])):
+            matriz_r[i][j] = matriz[i][j] * -1
+    
+    return matriz_r
+
 #-----Ordenamiento-----
 
 def ordenar_arreglo_burbuja(lista : list) -> None:
@@ -119,3 +178,93 @@ def ordenar_matriz_doble_criterio(matriz : list, criterio_1 : int, criterio_2 : 
                 matriz[i] = matriz[i + 1]
                 matriz[i + 1] = aux
                 flag = 1
+
+
+# Cadenas
+
+def es_alfabetico(cadena : str) -> bool:
+    '''
+    Función que recibe una cadena de caracteres,
+    revisa que sólo posea caracteres alfabéticos.
+    Retorna True si es así, False en caso contrario.
+    '''
+
+    resultado = True
+
+    for i in range(len(cadena)):
+        c_ascii = ord(cadena[i])
+        if (c_ascii < 65) or (c_ascii > 90 and c_ascii < 97) or (c_ascii > 122):
+            resultado = False
+
+    return resultado
+
+def convertir_caracter_mayuscula(cadena : str) -> str | None:
+    '''
+    Función que recibe un caracter.
+    Si es posible, lo convierte a mayúscula.
+    Si ya está en mayúscula o es otro tipo de caracter, lo retorna.
+    Si hay más de un caracter, retorna None.
+    '''
+
+    if len(cadena) > 1:
+        return None
+    
+    if ord(cadena) > 97 and ord(cadena) < 122:
+        return chr(ord(cadena) - 32)
+    else:
+        return cadena
+
+def capitalizar_texto(cadena : str) -> str:
+    '''
+    Función que convierte la primera letra de la cadena a mayúscula.
+    Retorna la nueva cadena.
+    '''
+
+    cadena_retorno = ""
+
+    for i in range(len(cadena)):
+        if i == 0:
+            c_ascii = ord(cadena[i])
+            if c_ascii >= 97 and c_ascii <= 122:
+                aux = c_ascii - 32
+                cadena_retorno += chr(aux)
+            else:
+                cadena_retorno += cadena[i]
+        else:
+            cadena_retorno += cadena[i]
+
+    return cadena_retorno
+
+def generar_titulo(cadena : str) -> str:
+    '''
+    Función que recibe una cadena de caracteres.
+    Convierte las letras iniciales de cada palabra a mayúscula.
+    Retorna la nueva cadena.
+    '''
+
+    cadena_retorno = ""
+
+    for i in range(len(cadena)):
+        c_ascii = ord(cadena[i])
+
+        if i == 0:
+            if c_ascii >= 97 and c_ascii <= 122:
+                aux = c_ascii - 32
+                cadena_retorno += chr(aux)
+            else:
+                cadena_retorno += cadena[i]
+        else:
+            if cadena[i - 1] == " ":
+                if c_ascii >= 97 and c_ascii <= 122:
+                    aux = c_ascii - 32
+                    cadena_retorno += chr(aux)
+                else:
+                    cadena_retorno += cadena[i]
+            else:
+                if c_ascii >= 65 and c_ascii <= 90:
+                    aux = c_ascii + 32
+                    cadena_retorno += chr(aux)
+                else:
+                    cadena_retorno += cadena[i]
+    
+    return cadena_retorno

@@ -179,6 +179,29 @@ def ordenar_matriz_doble_criterio(matriz : list, criterio_1 : int, criterio_2 : 
                 matriz[i + 1] = aux
                 flag = 1
 
+def ordenar_matriz_doble_criterio_descendente_con_copia(matriz : list, criterio_1 : int, criterio_2 : int) -> list:
+    '''
+    Función que recibe una matriz y dos enteros que funcionan como criterios de ordenamiento.
+    Retorna una copia de la matriz ordenada según la columna del criterio 1. En caso de haber valores iguales,
+    aplica el ordenamiento según la columna del criterio 2.
+    '''
+
+    flag = 1
+    matriz_ordenada = matriz.copy()
+
+    while flag:
+        flag = 0
+        for i in range (len(matriz) - 1):
+            if  (matriz_ordenada[i][criterio_1] < matriz_ordenada[i + 1][criterio_1]) or (
+                (matriz_ordenada[i][criterio_1] == matriz_ordenada[i + 1][criterio_1]) and 
+                (matriz_ordenada[i][criterio_2] < matriz_ordenada[i + 1][criterio_2])):
+                
+                aux = matriz_ordenada[i]
+                matriz_ordenada[i] = matriz_ordenada[i + 1]
+                matriz_ordenada[i + 1] = aux
+                flag = 1
+
+    return matriz_ordenada
 
 # Cadenas
 

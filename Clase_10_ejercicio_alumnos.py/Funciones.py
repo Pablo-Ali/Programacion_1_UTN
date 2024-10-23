@@ -309,15 +309,3 @@ def calcular_alumnos_superan_promedio(matriz : list, columna : int, promedio : f
             contador += 1
 
     return contador
-
-def mostrar_notas(matriz_bailarines : list) -> None:
-    '''
-    Función que recibe la matriz de bailarines e
-    imprime sus notas.
-    '''
-
-    for i in range(len(matriz_bailarines)):
-        print(f"Nro participante: {i + 1}")
-        print(f"Nota jurado 1: {matriz_bailarines[i][1]}")
-        print(f"Nota jurado 2: {matriz_bailarines[i][2]}")
-        print(f"Nota jurado 3: {matriz_bailarines[i][3]}")

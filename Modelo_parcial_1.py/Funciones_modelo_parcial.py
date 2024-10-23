@@ -110,6 +110,7 @@ def mostrar_notas(matriz_bailarines : list) -> None:
         print(f"Nota jurado 1: {matriz_bailarines[i][1]}")
         print(f"Nota jurado 2: {matriz_bailarines[i][2]}")
         print(f"Nota jurado 3: {matriz_bailarines[i][3]}")
+        print(f"Promedio: {matriz_bailarines[i][4]}")
 
 def mostrar_triple_7(matriz_bailarines : list) -> None:
     '''

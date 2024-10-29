@@ -83,9 +83,41 @@ def calcular_matriz_opuesta(matriz : list) -> list:
     
     return matriz_r
 
+#-----Carga-----
+
+def ingresar_nota() -> int:
+    '''
+    Función que se encarga de pedir una nota por teclado 
+    y verifica que esta esté entre uno y diez.
+    Finalmente, retorna la nota.
+    '''
+
+    nota = int(input("Ingrese la nota: "))
+
+    while nota < 1 or nota > 10:
+        print("La nota final debe ser del 1 al 10.")
+        nota = int(input("Ingrese la nota: "))
+
+    return nota
+
+def pedir_opcion(min : int, max : int) -> int:
+    '''
+    Función que recibe por parámetro un mínimo y un máximo y 
+    se encarga de validar que el número ingresado se encuentre dentro de ese rango.
+    Retorna el número.
+    '''
+    num = int(input("Ingrese la opción: "))
+
+    while num < min or num > max:
+        print(f"Las opciones son del {min} al {max}")
+        num = int(input("Ingrese la opción: "))
+
+    return num
+
+
 #-----Ordenamiento-----
 
-def ordenar_arreglo_burbuja(lista : list) -> None:
+def ordenar_arreglo_burbuja_ascendente(lista : list) -> None:
     '''
     Función que recibe un arreglo de números y lo ordena de menor 
     a mayor.
@@ -122,7 +154,7 @@ def ordenar_arreglo_burbuja_con_copia(lista : list) -> list:
 
     return lista_ordenada
 
-def ordenar_matrices_segun_columna(matriz : list, columna : int) -> None:
+def ordenar_matrices_segun_columna_ascendente(matriz : list, columna : int) -> None:
     '''
     Función que recibe una matriz y un entero que representa una de sus columnas.
     Ordena esa matriz de menor a mayor.
@@ -138,7 +170,7 @@ def ordenar_matrices_segun_columna(matriz : list, columna : int) -> None:
                 matriz[i + 1] = aux
                 flag = 1
 
-def ordenar_matrices_segun_columna_con_copia(matriz : list, columna : int) -> list:
+def ordenar_matrices_segun_columna_ascendente_con_copia(matriz : list, columna : int) -> list:
     '''
     Función que recibe una matriz y un entero que representa una de sus columnas.
     Ordena esa matriz de menor a mayor.
@@ -158,7 +190,7 @@ def ordenar_matrices_segun_columna_con_copia(matriz : list, columna : int) -> li
 
     return matriz_ordenada
 
-def ordenar_matriz_doble_criterio(matriz : list, criterio_1 : int, criterio_2 : int) -> None:
+def ordenar_matriz_doble_criterio_ascendente(matriz : list, criterio_1 : int, criterio_2 : int) -> None:
     '''
     Función que recibe una matriz y dos enteros que funcionan como criterios de ordenamiento.
     Ordena la matriz según la columna del criterio 1. En caso de haber valores iguales,
@@ -203,7 +235,7 @@ def ordenar_matriz_doble_criterio_descendente_con_copia(matriz : list, criterio_
 
     return matriz_ordenada
 
-# Cadenas
+#-----Cadenas-----
 
 def es_alfabetico(cadena : str) -> bool:
     '''

@@ -60,22 +60,26 @@ print("--------------------------------------------------------")
 
 # 3
 
-# def reemplazar_vocales(cadena : str) -> str:
-#     '''
-#     Función que recibe una cadena de texto y reemplaza sus vocales
-#     por letras aleatorias. Todo en minúsculas.
-#     Retorna la nueva cadena.
-#     '''
+def reemplazar_vocales(cadena : str) -> str:
+    '''
+    Función que recibe una cadena de texto y reemplaza sus vocales
+    por letras aleatorias. Todo en minúsculas.
+    Retorna la nueva cadena.
+    '''
+    cadena_retorno = ""
+    for i in range(len(cadena)):
+        letra = ord(cadena[i])
+        if letra == 97 or letra == 101 or letra == 105 or letra == 111 or letra == 117:
+            letra_aleatoria = random.randint(98,122)
+            nueva_letra = chr(letra_aleatoria)
+            cadena_retorno += nueva_letra
+        else:
+            cadena_retorno += cadena[i]
 
-#     for i in range(len(cadena)):
-#         letra = ord(cadena[i])
-#         if letra == 97 or letra == 101 or letra == 105 or letra == 111 or letra == 117:
-#             letra_aleatoria = random.randint(98,122)
-#             cadena.replace(cadena[i], chr(letra_aleatoria))
-
-#     return cadena
+    return cadena_retorno
     
-# print(reemplazar_vocales("hola mundo"))
+print(reemplazar_vocales("hola mundo"))
+print("--------------------------------------------------------")
 
 # 4
 

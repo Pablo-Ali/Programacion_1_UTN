@@ -235,91 +235,24 @@ def ordenar_matriz_doble_criterio_descendente_con_copia(matriz : list, criterio_
 
     return matriz_ordenada
 
-#-----Cadenas-----
+#-----Diccionarios y listas de diccionarios-----
 
-def es_alfabetico(cadena : str) -> bool:
+def mostrar_diccionario(diccionario) -> None:
     '''
-    Función que recibe una cadena de caracteres,
-    revisa que sólo posea caracteres alfabéticos.
-    Retorna True si es así, False en caso contrario.
     '''
 
-    resultado = True
+    for clave,valor in diccionario.items():
+        print(f"{clave.title().replace("-"," ")} : {valor}")
 
-    for i in range(len(cadena)):
-        c_ascii = ord(cadena[i])
-        if (c_ascii < 65) or (c_ascii > 90 and c_ascii < 97) or (c_ascii > 122):
-            resultado = False
-
-    return resultado
-
-def convertir_caracter_mayuscula(cadena : str) -> str | None:
+def mostrar_lista_diccionario(lista : list) -> bool:
     '''
-    Función que recibe un caracter.
-    Si es posible, lo convierte a mayúscula.
-    Si ya está en mayúscula o es otro tipo de caracter, lo retorna.
-    Si hay más de un caracter, retorna None.
     '''
 
-    if len(cadena) > 1:
-        return None
+    retorno = False
+
+    for elemento in lista:
+        mostrar_diccionario(elemento)
+        print("")
+        retorno = True
     
-    if ord(cadena) > 97 and ord(cadena) < 122:
-        return chr(ord(cadena) - 32)
-    else:
-        return cadena
-
-def capitalizar_texto(cadena : str) -> str:
-    '''
-    Función que convierte la primera letra de la cadena a mayúscula.
-    Retorna la nueva cadena.
-    '''
-
-    cadena_retorno = ""
-
-    for i in range(len(cadena)):
-        if i == 0:
-            c_ascii = ord(cadena[i])
-            if c_ascii >= 97 and c_ascii <= 122:
-                aux = c_ascii - 32
-                cadena_retorno += chr(aux)
-            else:
-                cadena_retorno += cadena[i]
-        else:
-            cadena_retorno += cadena[i]
-
-    return cadena_retorno
-
-def generar_titulo(cadena : str) -> str:
-    '''
-    Función que recibe una cadena de caracteres.
-    Convierte las letras iniciales de cada palabra a mayúscula.
-    Retorna la nueva cadena.
-    '''
-
-    cadena_retorno = ""
-
-    for i in range(len(cadena)):
-        c_ascii = ord(cadena[i])
-
-        if i == 0:
-            if c_ascii >= 97 and c_ascii <= 122:
-                aux = c_ascii - 32
-                cadena_retorno += chr(aux)
-            else:
-                cadena_retorno += cadena[i]
-        else:
-            if cadena[i - 1] == " ":
-                if c_ascii >= 97 and c_ascii <= 122:
-                    aux = c_ascii - 32
-                    cadena_retorno += chr(aux)
-                else:
-                    cadena_retorno += cadena[i]
-            else:
-                if c_ascii >= 65 and c_ascii <= 90:
-                    aux = c_ascii + 32
-                    cadena_retorno += chr(aux)
-                else:
-                    cadena_retorno += cadena[i]
-    
-    return cadena_retorno
+    return retorno

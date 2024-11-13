@@ -1,3 +1,12 @@
+import copy
+
+def imprimir_lista(lista : list) -> None:
+    '''
+    '''
+
+    for elemento in lista:
+        print(elemento)
+
 def mostrar_diccionario(diccionario) -> None:
     '''
     '''
@@ -18,6 +27,23 @@ def mostrar_lista_diccionario(lista : list) -> bool:
     
     return retorno
 
+def mostrar_lista_diccionario_hasta_5(lista : list) -> bool:
+    '''
+    '''
+
+    retorno = False
+    contador = 0
+
+    for elemento in lista:
+        contador += 1
+        if contador > 5:
+            break
+        mostrar_diccionario(elemento)
+        print("")
+        retorno = True
+    
+    return retorno
+
 def cargar_empleados(lista_empleados:list) -> bool:
     '''
     '''
@@ -31,9 +57,10 @@ def cargar_empleados(lista_empleados:list) -> bool:
     sueldo = ingresar_sueldo()
     
     diccionario = {"dni":dni,"apellido":apellido,"nombre":nombre,"edad":edad,"rol":rol,"años-de-antiguedad":antiguedad,"sueldo-mensual-en-pesos":sueldo}
-    
-    print("Datos a cargar:")
+    print("\n-----------------------------------")
+    print("Datos a cargar:\n")
     mostrar_diccionario(diccionario)
+    print("-----------------------------------")
     
     print("¿Desea guardar los datos?\n1 - Sí\n2 - No")
     opcion = pedir_opcion(1, 2)
@@ -118,7 +145,7 @@ def ingresar_edad() -> int:
 
     while edad < 18 or edad > 65:
         print("La edad debe estar entre 18 y 65 años")
-        int(input("Ingrese la edad: "))
+        edad = int(input("Ingrese la edad: "))
 
     return edad
 
@@ -165,3 +192,48 @@ def ingresar_sueldo() -> int:
 
     return sueldo
 
+def ordenar_por_sueldo(lista_empleados : list[dict]) -> list[dict]:
+    '''
+    '''
+
+    lista_retorno = copy.deepcopy(lista_empleados)
+
+    lista_retorno.sort(key=lambda x: x['sueldo-mensual-en-pesos'], reverse=True)
+
+    return lista_retorno
+
+def ordenar_por_edad(lista_empleados : list[dict]) -> list[dict]:
+    '''
+    '''
+
+    lista_retorno = copy.deepcopy(lista_empleados)
+
+    lista_retorno.sort(key=lambda x: x['edad'], reverse=True)
+
+    return lista_retorno
+
+def ordenar_por_antiguedad(lista_empleados : list[dict]) -> list[dict]:
+    '''
+    '''
+
+    lista_retorno = copy.deepcopy(lista_empleados)
+
+    lista_retorno.sort(key=lambda x: x['"años-de-antiguedad"'], reverse=True)
+
+    return lista_retorno
+
+def ordenar_apellidos_unicos(lista_empleados : list[dict]) -> list:
+    '''
+    '''
+
+    set_apellidos = set()
+
+    for empleado in lista_empleados:
+        apellido = empleado['apellido']
+        set_apellidos.add(apellido)
+
+    lista_retorno = list(set_apellidos)
+
+    lista_retorno.sort()
+    
+    return lista_retorno

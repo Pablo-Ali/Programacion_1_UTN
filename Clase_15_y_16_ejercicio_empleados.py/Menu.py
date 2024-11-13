@@ -22,6 +22,8 @@ flag_carga_diccionario = False
 flag_carga_csv = False
 flag_carga_json = False
 
+lista_empleados = []
+
 while(True):
     print(f"\n{subrayado}")
     print(titulo)
@@ -35,66 +37,89 @@ while(True):
             if flag_carga_csv:
                 pass
             else:
-                print("Primero debe realizar la carga del archivo csv")
+                print("\nPrimero debe realizar la carga del archivo csv")
         case 2:
             if flag_carga_json:
                 pass
             else:
-                print("Primero debe realizar la carga del archivo json")
+                print("\nPrimero debe realizar la carga del archivo json")
         case 3:
-            flag_carga_diccionario = True
+            if Funciones.cargar_empleados(lista_empleados):
+                print("\nEmpleado cargado con éxito")
+                flag_carga_diccionario = True
+            else:
+                print("\nOperación cancelada")
         case 4:
             if flag_carga_diccionario:
-                pass
+                print("\n-----------------------------------")
+                print("Lista de empleados\n")
+                Funciones.mostrar_lista_diccionario(lista_empleados)
+                print("-----------------------------------")
             else:
-                print("Primero debe realizar la carga de los empleados")
+                print("\nPrimero debe realizar la carga de los empleados")
         case 5:
             if flag_carga_diccionario:
-                pass
+                lista_ordenada = Funciones.ordenar_por_sueldo(lista_empleados)
+                print("\n-----------------------------------")
+                print("Lista de empleados ordenados por sueldo\n")
+                Funciones.mostrar_lista_diccionario(lista_ordenada)
+                print("-----------------------------------")
             else:
-                print("Primero debe realizar la carga de los empleados")
+                print("\nPrimero debe realizar la carga de los empleados")
         case 6:
             if flag_carga_diccionario:
-                pass
+                lista_ordenada = Funciones.ordenar_por_edad(lista_empleados)
+                print("\n-----------------------------------")
+                print("Lista de los 5 empleados de mayor edad\n")
+                Funciones.mostrar_lista_diccionario_hasta_5(lista_ordenada)
+                print("-----------------------------------")
             else:
-                print("Primero debe realizar la carga de los empleados")
+                print("\nPrimero debe realizar la carga de los empleados")
         case 7:
             if flag_carga_diccionario:
-                pass
+                lista_ordenada = Funciones.ordenar_por_antiguedad(lista_empleados)
+                print("\n-----------------------------------")
+                print("Lista de los 5 empleados de mayor antigüedad\n")
+                Funciones.mostrar_lista_diccionario_hasta_5(lista_ordenada)
+                print("-----------------------------------")
             else:
-                print("Primero debe realizar la carga de los empleados")
+                print("\nPrimero debe realizar la carga de los empleados")
         case 8:
             if flag_carga_diccionario:
-                pass
+                lista_ordenada = Funciones.ordenar_apellidos_unicos(lista_empleados)
+                print("\n-----------------------------------")
+                print("Lista de apellidos\n")
+                Funciones.imprimir_lista(lista_ordenada)
+                print("-----------------------------------")
             else:
-                print("Primero debe realizar la carga de los empleados")
+                print("\nPrimero debe realizar la carga de los empleados")
         case 9:
             if flag_carga_diccionario:
                 pass
             else:
-                print("Primero debe realizar la carga de los empleados")
+                print("\nPrimero debe realizar la carga de los empleados")
         case 10:
             if flag_carga_diccionario:
                 pass
             else:
-                print("Primero debe realizar la carga de los empleados")
+                print("\nPrimero debe realizar la carga de los empleados")
         case 11:
             if flag_carga_diccionario:
                 pass
             else:
-                print("Primero debe realizar la carga de los empleados")
+                print("\nPrimero debe realizar la carga de los empleados")
         case 12:
             if flag_carga_diccionario:
                 pass
                 flag_carga_csv = True
             else:
-                print("Primero debe realizar la carga de los empleados")
+                print("\nPrimero debe realizar la carga de los empleados")
         case 13:
             if flag_carga_diccionario:
                 pass
                 flag_carga_json = True
             else:
-                print("Primero debe realizar la carga de los empleados")
+                print("\nPrimero debe realizar la carga de los empleados")
         case 14:
-            print("Saliendo...")
+            print("\nSaliendo...")
             break

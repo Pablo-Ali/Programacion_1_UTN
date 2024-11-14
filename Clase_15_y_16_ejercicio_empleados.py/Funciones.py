@@ -237,3 +237,39 @@ def ordenar_apellidos_unicos(lista_empleados : list[dict]) -> list:
     lista_retorno.sort()
     
     return lista_retorno
+
+def dolarizar_sueldo(lista_empleados : list[dict]) -> list[dict]:
+    '''
+    '''
+
+    usd = 1140
+
+    lista_retorno = copy.deepcopy(lista_empleados)
+
+    for diccionario in lista_retorno:
+        for clave in list(diccionario.keys()):
+            if clave == 'sueldo-mensual-en-pesos':
+                sueldo_usd = diccionario[clave] / usd
+                del diccionario[clave]
+                diccionario['sueldo-mensual-en-dolares'] = sueldo_usd
+
+    return lista_retorno
+
+def buscar_empleado_dni(lista_empleados : list[dict]) -> dict | None:
+    '''
+    '''
+
+    dni = ingresar_DNI()
+
+    flag = False
+
+    for diccionario in lista_empleados:
+        for valor in diccionario.values():
+            if valor == dni:
+                diccionario_retorno = diccionario.copy()
+                flag = True
+
+    if flag:
+        return diccionario_retorno
+    else:
+        return None

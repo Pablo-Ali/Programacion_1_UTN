@@ -95,12 +95,23 @@ while(True):
                 print("\nPrimero debe realizar la carga de los empleados")
         case 9:
             if flag_carga_diccionario:
-                pass
+                lista_sueldos_dolares = Funciones.dolarizar_sueldo(lista_empleados)
+                print("\n-----------------------------------")
+                print("Lista de empleados ordenados por sueldo en dólares\n")
+                Funciones.mostrar_lista_diccionario(lista_sueldos_dolares)
+                print("-----------------------------------")
             else:
                 print("\nPrimero debe realizar la carga de los empleados")
         case 10:
             if flag_carga_diccionario:
-                pass
+                busqueda = Funciones.buscar_empleado_dni(lista_empleados)
+                print("\n-----------------------------------")
+                if busqueda == None:
+                    print("No se encuentra ningún empleado con ese DNI")
+                else:
+                    print("Empleado encontrado:\n")
+                    Funciones.mostrar_diccionario(busqueda)
+                print("-----------------------------------")
             else:
                 print("\nPrimero debe realizar la carga de los empleados")
         case 11:
